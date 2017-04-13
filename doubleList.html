@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	
+        <title> game </title>
+        
+    </head>
+
+    <body>
+<script type="text/javascript">
+var Node = function (data, prev, next) {
+	this.data = data;
+	this.prev = null;
+	this.next = null;
+}
+
+function DoubleList () {
+	this.head = null;
+	this.tail = null;
+	this.length = 0;
+}
+
+DoubleList.prototype.append = function(data) {
+	var node = new Node(data);
+	var current;
+
+	if (this.head == null) {
+		this.head = this.tail = node;
+		this.head.next = this.tail;
+		this.tail.prev = this.head;
+		this.head.prev = this.tail.next = null;
+		this.length ++;
+	} else {
+		current = this.tail;
+		current.next = this.tail = node;
+		this.tail.prev = current;
+		this.length ++;
+	}
+	return this;
+}
+
+DoubleList.prototype.at = function(index) {
+
+	if(this.head == null || index <= 0 || index > this.length) {
+		return "err"
+	} else if (index == 1) {
+		return this.head.data;
+	} else if (index == this.length) {
+		return this.tail.data;
+	} else {
+
+		var current = this.head;
+		var count = 1;
+		while (count != index) {
+			current = current.next;
+			count ++;
+		}
+		return current.data;
+	}
+	return this;
+}
+
+
+DoubleList.prototype.insertAt = function(index, data){
+	var node = new Node(data);
+	var current = this.head;
+	var before;
+	var toAdd;
+	var after;
+	var count = 1;
+
+	if (index <= 0 || index > this.length + 1) {
+		return "err"
+	} else if (this.head == null) {
+		this.head = this.tail = node;
+		this.length ++;
+	} else if (index == this.length + 1) {
+		current = this.tail;
+		current.next = this.tail = node;
+		this.tail.prev = current;
+		this.length ++;
+	} else {
+
+		while ( count != index - 1) {
+			current = current.next;
+			count ++;
+		}
+		toAdd = node;
+		before = current;
+		after = current.next;
+
+		before.next = toAdd;
+		toAdd.prev = before;
+		toAdd.next = after;
+		after.prev = toAdd;
+		this.length ++;
+	}
+	return this;
+}
+
+
+	DoubleList.prototype.deleteAt = function(index) {
+			var current = this.head;
+			var count = 1;
+			var after;
+			var toDel;
+			var before;
+			var deleted;
+
+		if (this.head == null || index <= 0 || index > this.length) {
+			return "err";
+		} else if (index == 1)  { 
+			after = this.head.next;
+			toDel = this.head;
+			this.head = after;
+			toDel = null;
+			this.length --;
+		} else if ( index == this.length) {
+			before = this.tail.prev;
+			toDel = this.tail;
+			after = this.tail.next;
+			this.tail = before;
+			toDel = null;
+			this.tail.next = after;
+			this.length --;
+		} else{
+			while (count != index) {
+				current = current.next;
+				count ++;
+			}
+			toDel = current;
+			after = current.next;
+			before = current.prev;
+			deleted = toDel;
+
+			after.prev = before;
+			before.next = after;
+			toDel = null;
+			this.length --;
+		}
+		return this;
+	}
+
+	DoubleList.prototype.reverse = function() {
+		if (this.head == null) {
+			return "err";
+		} else {
+			var current = this.tail;
+			var count = this.length ;
+			var before;
+
+			while ( 0 <= count - 1 ) {
+				before = current.data;
+				current = current.prev;
+				count --;
+				listRev.append(before);
+			}
+			return listRev;
+		}
+		return this;
+	}
+
+
+	DoubleList.prototype.search = function( data ) {
+		var current = this.head;
+		var count = 1;
+		var tmp;
+
+		if (this.head == null) {
+			return "err"
+		} else if (this.head.data == data || this.head.data == this.tail.data == data) {
+			return 1;
+		} else if (this.tail.data == data) {
+			return this.length;
+		} else {
+
+			while ( count <= this.length) {
+				tmp = current;
+				current = current.next;
+				if (tmp.data == data) {
+					return count;
+				}
+
+				count ++;
+			}
+			return -1;
+
+		}
+
+	}
+
+
+var list = new DoubleList();
+var listRev = new DoubleList();
+console.log(list.append(1111));
+console.log(list.append(2222));
+console.log(list.append(3333));
+console.log(list.append(4444));
+
+</script>
+</body>
+</html>
