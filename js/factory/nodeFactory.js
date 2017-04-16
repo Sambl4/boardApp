@@ -1,9 +1,71 @@
 angular.module('boardApp').factory('nodeFactory', function () { 
 	var service = {}; 
 
-	var cards = []; 
+	var list = new DoubleList(); 
+
+	var Node = function (rowPosition, colPosition, type, data,  prev, next) {
+		this.prev = null;
+		this.next = null;
+		this.type = type;
+		this.rowPosition = rowPosition;
+		this.colPosition = colPosition;
+		this.data = data;
+	};
+
+	function DoubleList () {
+		this.head = null;
+		this.tail = null;
+		this.length = 0;
+	};
+
+	DoubleList.prototype.append = function (rowPosition, colPosition, type, data) {
+
+		var node = new Node(rowPosition, colPosition, type, data);
+		var current;
+
+		if (this.head == null) {
+			this.head = this.tail = node;
+			this.head.next = this.tail;
+			this.tail.prev = this.head;
+			this.head.prev = this.tail.next = null;
+			this.length ++;
+		} else {
+			current = this.tail;
+			current.next = this.tail = node;
+			this.tail.prev = current;
+			this.length ++;
+		}
+
+		return this;
+	};
+
+	service.createNewElement = function (rowPosition, colPosition, type, data) {
+		// console.log("rowPosition", rowPosition);
+		// console.log("colPosition", colPosition);
+		list.append(rowPosition, colPosition, type, data);
+		console.log("list", list);
+		return list;
+	};
 
 
+	service.checkElement = function (rowPosition, colPosition) {
+		// var table = angular.element(document.querySelector(".table"));
+		console.log("rowPosition", rowPosition);
+		console.log("colPosition", colPosition);
+		var table =angular.element(document).find('td');
+		table = [].slice.call(table);
+		table.map( function (elem) {
+
+			if ( elem.getAttribute("ng-attr-data-row") == rowPosition && elem.getAttribute("ng-attr-data-col") == colPosition) {
+				console.log("*******elem**********", elem);
+				elem.append("=====");
+			}
+		});
+
+		// var box = table.attr("ng-attr-data-row");
+		// var box = table.find('td');
+		
+	};
 
 	// service.createCardsArr = function () { 
 	// 	if (localStorage.length > 0) { 

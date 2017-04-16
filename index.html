@@ -11,104 +11,105 @@
     <body>
 
         <section ng-controller="tableCtrl as tableCtrl">
-            <div>
-                <span>enter row:</span>
-                <input type="text" ng-model="tableCtrl.rowPositionNewElem">
-                <span>enter col:</span>
-                <input type="number" ng-model="tableCtrl.colPositionNewElem">
-                <input type="button" value="create" ng-click="tableCtrl.createNewElem()">
-            </div>
-            <p>{{today}}</p>
-            <!-- <table ng-click="tableCtrl.checkTD()"> -->
-            <table class="board" ng-click="tableCtrl.checkTD($event)">
-                <th >
-                    <td class="thStyle"> 1 </td>
-                    <td class="thStyle"> 2 </td>
-                    <td class="thStyle"> 3 </td>
-                    <td class="thStyle"> 4 </td>
-                    <td class="thStyle"> 5 </td>
-                    <td class="thStyle"> 6 </td>
-                    <td class="thStyle"> 7 </td>
-                    <td class="thStyle"> 8 </td>
-                    <td class="thStyle"> 9 </td>
-                    <td class="thStyle"> 10 </td>
-                </th>
+            <div ng-controller="nodeCtrl as nodeCtrl"> 
+                <div>
+                    <span>enter row:</span>
+                    <input type="text" ng-model="nodeCtrl.rowPositionNewElem">
+                    <span>enter col:</span>
+                    <input type="number" ng-model="nodeCtrl.colPositionNewElem">
+                    <input type="button" value="create" ng-click="nodeCtrl.createNewElem()">
+                </div>
+                <!-- <p>{{tableCtrl.today | date}}</p> -->
+                <!-- <table ng-click="tableCtrl.checkTD()"> -->
+                <table class="board" ng-click="tableCtrl.checkTD($event)">
+                    <th >
+                        <td class="thStyle"> 1 </td>
+                        <td class="thStyle"> 2 </td>
+                        <td class="thStyle"> 3 </td>
+                        <td class="thStyle"> 4 </td>
+                        <td class="thStyle"> 5 </td>
+                        <td class="thStyle"> 6 </td>
+                        <td class="thStyle"> 7 </td>
+                        <td class="thStyle"> 8 </td>
+                        <td class="thStyle"> 9 </td>
+                        <td class="thStyle"> 10 </td>
+                    </th>
 
-                <tr>
-                    <td class="trowStyle"> A </td>
-                    <td ng-attr-data-row="A" ng-attr-data-col="1"></td>
-                    <td ng-attr-data-row="A" ng-attr-data-col="2"></td>
-                    <td ng-attr-data-row="A" ng-attr-data-col="3"></td>
-                    <td ng-attr-data-row="A" ng-attr-data-col="4"></td>
-                    <td ng-attr-data-row="A" ng-attr-data-col="5"></td>
-                    <td ng-attr-data-row="A" ng-attr-data-col="6"></td>
-                    <td ng-attr-data-row="A" ng-attr-data-col="7"></td>
-                    <td ng-attr-data-row="A" ng-attr-data-col="8"></td>
-                    <td ng-attr-data-row="A" ng-attr-data-col="9"></td>
-                    <td ng-attr-data-row="A" ng-attr-data-col="10"></td>
-                </tr>
+                    <tr>
+                        <td class="trowStyle"> A </td>
+                        <td ng-attr-data-row="A" ng-attr-data-col="1"></td>
+                        <td ng-attr-data-row="A" ng-attr-data-col="2"></td>
+                        <td ng-attr-data-row="A" ng-attr-data-col="3"></td>
+                        <td ng-attr-data-row="A" ng-attr-data-col="4"></td>
+                        <td ng-attr-data-row="A" ng-attr-data-col="5"></td>
+                        <td ng-attr-data-row="A" ng-attr-data-col="6"></td>
+                        <td ng-attr-data-row="A" ng-attr-data-col="7"></td>
+                        <td ng-attr-data-row="A" ng-attr-data-col="8"></td>
+                        <td ng-attr-data-row="A" ng-attr-data-col="9"></td>
+                        <td ng-attr-data-row="A" ng-attr-data-col="10"></td>
+                    </tr>
 
-                <tr>
-                    <td class="trowStyle"> B </td>
-                    <td ng-attr-data-row="B" ng-attr-data-col="1"></td>
-                    <td ng-attr-data-row="B" ng-attr-data-col="2"></td>
-                    <td ng-attr-data-row="B" ng-attr-data-col="3"></td>
-                    <td ng-attr-data-row="B" ng-attr-data-col="4"></td>
-                    <td ng-attr-data-row="B" ng-attr-data-col="5"></td>
-                    <td ng-attr-data-row="B" ng-attr-data-col="6"></td>
-                    <td ng-attr-data-row="B" ng-attr-data-col="7"></td>
-                    <td ng-attr-data-row="B" ng-attr-data-col="8"></td>
-                    <td ng-attr-data-row="B" ng-attr-data-col="9"></td>
-                    <td ng-attr-data-row="B" ng-attr-data-col="10"></td>
-                </tr>
+                    <tr>
+                        <td class="trowStyle"> B </td>
+                        <td ng-attr-data-row="B" ng-attr-data-col="1"></td>
+                        <td ng-attr-data-row="B" ng-attr-data-col="2"></td>
+                        <td ng-attr-data-row="B" ng-attr-data-col="3"></td>
+                        <td ng-attr-data-row="B" ng-attr-data-col="4"></td>
+                        <td ng-attr-data-row="B" ng-attr-data-col="5"></td>
+                        <td ng-attr-data-row="B" ng-attr-data-col="6"></td>
+                        <td ng-attr-data-row="B" ng-attr-data-col="7"></td>
+                        <td ng-attr-data-row="B" ng-attr-data-col="8"></td>
+                        <td ng-attr-data-row="B" ng-attr-data-col="9"></td>
+                        <td ng-attr-data-row="B" ng-attr-data-col="10"></td>
+                    </tr>
 
-                <tr>
-                    <td class="trowStyle"> C </td>
-                    <td ng-attr-data-row="C" ng-attr-data-col="1"></td>
-                    <td ng-attr-data-row="C" ng-attr-data-col="2"></td>
-                    <td ng-attr-data-row="C" ng-attr-data-col="3"></td>
-                    <td ng-attr-data-row="C" ng-attr-data-col="4"></td>
-                    <td ng-attr-data-row="C" ng-attr-data-col="5"></td>
-                    <td ng-attr-data-row="C" ng-attr-data-col="6"></td>
-                    <td ng-attr-data-row="C" ng-attr-data-col="7"></td>
-                    <td ng-attr-data-row="C" ng-attr-data-col="8"></td>
-                    <td ng-attr-data-row="C" ng-attr-data-col="9"></td>
-                    <td ng-attr-data-row="C" ng-attr-data-col="10"></td>
-                </tr>
+                    <tr>
+                        <td class="trowStyle"> C </td>
+                        <td ng-attr-data-row="C" ng-attr-data-col="1"></td>
+                        <td ng-attr-data-row="C" ng-attr-data-col="2"></td>
+                        <td ng-attr-data-row="C" ng-attr-data-col="3"></td>
+                        <td ng-attr-data-row="C" ng-attr-data-col="4"></td>
+                        <td ng-attr-data-row="C" ng-attr-data-col="5"></td>
+                        <td ng-attr-data-row="C" ng-attr-data-col="6"></td>
+                        <td ng-attr-data-row="C" ng-attr-data-col="7"></td>
+                        <td ng-attr-data-row="C" ng-attr-data-col="8"></td>
+                        <td ng-attr-data-row="C" ng-attr-data-col="9"></td>
+                        <td ng-attr-data-row="C" ng-attr-data-col="10"></td>
+                    </tr>
 
-                <tr>
-                    <td class="trowStyle"> D </td>
-                    <td ng-attr-data-row="D" ng-attr-data-col="1"></td>
-                    <td ng-attr-data-row="D" ng-attr-data-col="2"></td>
-                    <td ng-attr-data-row="D" ng-attr-data-col="3"></td>
-                    <td ng-attr-data-row="D" ng-attr-data-col="4"></td>
-                    <td ng-attr-data-row="D" ng-attr-data-col="5"></td>
-                    <td ng-attr-data-row="D" ng-attr-data-col="6"></td>
-                    <td ng-attr-data-row="D" ng-attr-data-col="7"></td>
-                    <td ng-attr-data-row="D" ng-attr-data-col="8"></td>
-                    <td ng-attr-data-row="D" ng-attr-data-col="9"></td>
-                    <td ng-attr-data-row="D" ng-attr-data-col="10"></td>
-                </tr>
+                    <tr>
+                        <td class="trowStyle"> D </td>
+                        <td ng-attr-data-row="D" ng-attr-data-col="1"></td>
+                        <td ng-attr-data-row="D" ng-attr-data-col="2"></td>
+                        <td ng-attr-data-row="D" ng-attr-data-col="3"></td>
+                        <td ng-attr-data-row="D" ng-attr-data-col="4"></td>
+                        <td ng-attr-data-row="D" ng-attr-data-col="5"></td>
+                        <td ng-attr-data-row="D" ng-attr-data-col="6"></td>
+                        <td ng-attr-data-row="D" ng-attr-data-col="7"></td>
+                        <td ng-attr-data-row="D" ng-attr-data-col="8"></td>
+                        <td ng-attr-data-row="D" ng-attr-data-col="9"></td>
+                        <td ng-attr-data-row="D" ng-attr-data-col="10"></td>
+                    </tr>
 
-                <tr>
-                    <td class="trowStyle"> E </td>
-                    <td ng-attr-data-row="E" ng-attr-data-col="1"></td>
-                    <td ng-attr-data-row="E" ng-attr-data-col="2"></td>
-                    <td ng-attr-data-row="E" ng-attr-data-col="3"></td>
-                    <td ng-attr-data-row="E" ng-attr-data-col="4"></td>
-                    <td ng-attr-data-row="E" ng-attr-data-col="5"></td>
-                    <td ng-attr-data-row="E" ng-attr-data-col="6"></td>
-                    <td ng-attr-data-row="E" ng-attr-data-col="7"></td>
-                    <td ng-attr-data-row="E" ng-attr-data-col="8"></td>
-                    <td ng-attr-data-row="E" ng-attr-data-col="9"></td>
-                    <td ng-attr-data-row="E" ng-attr-data-col="10"></td>
-                </tr>
+                    <tr>
+                        <td class="trowStyle"> E </td>
+                        <td ng-attr-data-row="E" ng-attr-data-col="1"></td>
+                        <td ng-attr-data-row="E" ng-attr-data-col="2"></td>
+                        <td ng-attr-data-row="E" ng-attr-data-col="3"></td>
+                        <td ng-attr-data-row="E" ng-attr-data-col="4"></td>
+                        <td ng-attr-data-row="E" ng-attr-data-col="5"></td>
+                        <td ng-attr-data-row="E" ng-attr-data-col="6"></td>
+                        <td ng-attr-data-row="E" ng-attr-data-col="7"></td>
+                        <td ng-attr-data-row="E" ng-attr-data-col="8"></td>
+                        <td ng-attr-data-row="E" ng-attr-data-col="9"></td>
+                        <td ng-attr-data-row="E" ng-attr-data-col="10"></td>
+                    </tr>
 
 
 
-            </table>
+                </table>
 
-           
+           </div>
             
         </section>
 
@@ -116,7 +117,7 @@
 
         <script src="js/controllers/tableCtrl.js"></script>   
         <!-- <script src="js/controllers/listCtrl.js"></script>  -->
-        <!-- <script src="js/controllers/cardCtrl.js"></script>    -->
+        <script src="js/controllers/nodeCtrl.js"></script>   
 
         <!-- <script src="js/factory/listFactory.js"></script>    -->
         <script src="js/factory/nodeFactory.js"></script> 

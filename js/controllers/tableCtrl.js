@@ -1,5 +1,5 @@
 // angular.module('boardApp').controller('tableCtrl', function (listFactory, cardFactory, $http, updateDBFactory) { 
-angular.module('boardApp').controller('tableCtrl', function (nodeFactory) { 
+angular.module('boardApp').controller('tableCtrl', function () { 
 
 	var date = new Date; 
 	this.today = date; 
@@ -10,19 +10,11 @@ angular.module('boardApp').controller('tableCtrl', function (nodeFactory) {
 		// console.log(e.target);
 		if (e.target.attributes['ng-attr-data-row']) {
 			console.log("row", e.target.attributes['ng-attr-data-row'].value,
-					"col", e.target.attributes['ng-attr-data-col'].value )
+					"col", e.target.attributes['ng-attr-data-col'].value );
 		}
-	}
+	};
 
-	this.createNewElem = function () {
-		console.log("new row", this.rowPositionNewElem);
-		console.log("new col", this.colPositionNewElem);
-		this.rowPositionNewElem = "";
-		this.colPositionNewElem = "";
-	}
-
-
-
+	
 
 
 
