@@ -4,12 +4,14 @@ angular.module('boardApp').controller('nodeCtrl', function (nodeFactory) {
 this.createNewElem = function () {
 		console.log("new row", this.rowPositionNewElem);
 		console.log("new col", this.colPositionNewElem);
-		var rowPosition = this.rowPositionNewElem.toUpperCase();
+		var rowPosition = this.rowPositionNewElem;
 		var colPosition = this.colPositionNewElem;
-		nodeFactory.checkElement(rowPosition, colPosition);
-		nodeFactory.createNewElement(rowPosition, colPosition);
+		var typeElem = this.typeNewElem;
+		nodeFactory.checkElement(rowPosition, colPosition, typeElem);
+		nodeFactory.createNewElement(rowPosition, colPosition, typeElem);
 		this.rowPositionNewElem = "";
 		this.colPositionNewElem = "";
+		this.typeNewElem = null;
 	};
 
 

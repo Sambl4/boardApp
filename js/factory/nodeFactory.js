@@ -48,17 +48,40 @@ angular.module('boardApp').factory('nodeFactory', function () {
 	};
 
 
-	service.checkElement = function (rowPosition, colPosition) {
+	service.checkElement = function (rowPosition, colPosition, type) {
 		// var table = angular.element(document.querySelector(".table"));
 		console.log("rowPosition", rowPosition);
 		console.log("colPosition", colPosition);
-		var table =angular.element(document).find('td');
-		table = [].slice.call(table);
-		table.map( function (elem) {
+		var horizontalElement = angular.element("<div class='horizonLineBlock'> <div class='sleepers'></div> <div class='rails'></div>  </div>");
+		var verticalElement = angular.element("<div class='verticalLineBlock'> <div class='sleepers'></div> <div class='rails'></div>  </div>");
+		var qwerty = angular.element("<button>");
+		qwerty.css("width", "80px");
+		qwerty.css("height", "40px");
+		qwerty.css("background-color", "red");
+		qwerty.text("but");
+		// var horizontalElement = angular.element(
+			// "<div class'horizonLineBlock'> <div class='sleepers'></div><div class='rails'></div></div>");
+		
+		// horizontalElement.addClass = ("horizonLineBlock");
+		var tableForCheckIndex = angular.element(document).find('td');
+				
+				// tableForInsert.addClass("ooo");
+		tableForCheckIndex = [].slice.call(tableForCheckIndex);
+		tableForCheckIndex.map( function (elem, index) {
 
-			if ( elem.getAttribute("ng-attr-data-row") == rowPosition && elem.getAttribute("ng-attr-data-col") == colPosition) {
-				console.log("*******elem**********", elem);
-				elem.append("=====");
+			if (elem.getAttribute("ng-attr-data-row") == rowPosition &&
+				elem.getAttribute("ng-attr-data-col") == colPosition ) {
+
+				if (type == "horizontal") {
+					angular.element(elem).prepend(horizontalElement);
+					// elem3.prepend(qwerty);
+					// elem.prepend(qwerty);
+					console.log("*******elem horizontal**********", elem);
+					// elem.prepend(horizontalElement);
+				} else if (type == "vertical") {
+					console.log("*******elem vertical**********", elem);
+					angular.element(elem).prepend(verticalElement);
+				} 
 			}
 		});
 
@@ -67,6 +90,18 @@ angular.module('boardApp').factory('nodeFactory', function () {
 		
 	};
 
+
+	var obj = {
+		type: ""
+	};
+
+	service.transferSetElement = function (type) {
+		obj.type = type;
+	};
+
+	service.transferGetElement = function () {
+		return obj;
+	}
 	// service.createCardsArr = function () { 
 	// 	if (localStorage.length > 0) { 
 	// 		for(var i = 0; i < localStorage.length; i++) { 

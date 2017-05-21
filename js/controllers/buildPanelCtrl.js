@@ -1,32 +1,48 @@
 // angular.module('boardApp').controller('tableCtrl', function (listFactory, cardFactory, $http, updateDBFactory) { 
-angular.module('boardApp').controller('tableCtrl', function () { 
+angular.module('boardApp').controller('buildPanelCtrl', function (nodeFactory) { 
 
-	var date = new Date; 
-	this.today = date; 
+	// var date = new Date; 
+	// this.today = date; 
+	// this.check = function () {
+	// 	console.log("buildPanelCtrl");
+	// };
+	this.handleDragStart = function(e, elementDND) {
 
-	console.log("tableCtrl");
+		
+		if(e.type == "mousedown" ) { 
+			var type = e.path[2].attributes['ng-attr-data-type'].value;
+			// console.log("row", e.target.attributes['ng-attr-data-row'].value);
+			console.log("down");
+			// console.log("down", type);
 
-	this.checkTD = function (e) {
-		// console.log(e.target);
-		if (e.target.attributes['ng-attr-data-row']) {
-			console.log("row", e.target.attributes['ng-attr-data-row'].value,
-					"col", e.target.attributes['ng-attr-data-col'].value );
+			nodeFactory.transferSetElement (type);
+			elementDND = true;
+			console.log("this.elementDND", elementDND);
 		}
-	};
 
-	
-
-
-	this.handleDragEnd = function(e, elementDND) {
-console.log("this.elementDND11111", elementDND);
-		if(elementDND == true && e.type == "mouseup") {
+		if(e.type == "mouseup") {
 			var objType = nodeFactory.transferGetElement();
 			console.log("up", objType.type);
 			elementDND = false;
 			console.log("this.elementDND", elementDND);
 			// nodeFactory.transferGetElement();
 		}
-	};	
+		// console.log("e", e);
+		var buildPanelElements = angular.element(document.querySelectorAll(".panelWrap"));
+  		// this.style.opacity = '0.4';  // this / e.target is the source node.
+		[].forEach.call(buildPanelElements, elem => angular.element(elem).addClass("attantion"));
+}
+
+	this.check = function () {
+		var buildPanelElements = angular.element(document.querySelectorAll(".panelWrap"));
+		// [].forEach.call(buildPanelElements, elem => angular.element(elem).addEventListener('dragstart', handleDragStart, false));
+		console.log(buildPanelElements);
+		// this.style.opacity = '0.4';
+	};
+
+	
+
+
 
 
 
